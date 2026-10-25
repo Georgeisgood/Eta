@@ -34,6 +34,8 @@ internal object ResponsesRequestBuilder {
         request.remove("reasoning")
         ProviderReasoning.applyResponsesRequest(request, config)
         CodexResponsesRequest.configure(request, config)
+        // xAI Responses 与 Chat Completions 共用同一套工具 schema 和采样字段限制。
+        XaiCompatibleRequest.prepare(request, config)
         return request
     }
 
