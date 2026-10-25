@@ -129,6 +129,8 @@ internal object OpenAiChatCompletionsProvider : AgentProviderClient {
                         request.remove("tool_choice")
                     }
                 }
+                // xAI 比 OpenAI 更严格：工具 schema 与部分采样字段只在出站副本上改写。
+                XaiCompatibleRequest.prepare(request, config)
             }
     }
 
